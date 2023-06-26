@@ -6,11 +6,12 @@ package com.examenes.autenticacion.dao;
 
 import com.examenes.autenticacion.model.Seccion;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author rafhael
  */
 public interface SeccionRepository extends JpaRepository<Seccion,Long> {
-    Seccion FindByCodSeccion(String seccion);
+    Seccion findByCodSeccion(String seccion);
 }

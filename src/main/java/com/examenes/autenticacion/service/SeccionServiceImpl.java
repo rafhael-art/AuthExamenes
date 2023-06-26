@@ -33,7 +33,7 @@ public class SeccionServiceImpl implements SeccionService{
 
     @Override
     public Seccion FindByCodSeccion(String seccion) {
-       return secccionRepository.FindByCodSeccion(seccion);       
+       return secccionRepository.findByCodSeccion(seccion);       
     }
 
     @Override

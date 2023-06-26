@@ -27,7 +27,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     public Usuario FindByNombre(String nombre) {
-        return usuarioRepository.FindByNombre(nombre);
+        return usuarioRepository.findByNombre(nombre);
     }
 
     @Override

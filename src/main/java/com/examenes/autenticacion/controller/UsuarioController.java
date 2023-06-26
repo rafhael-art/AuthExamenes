@@ -5,7 +5,9 @@
 package com.examenes.autenticacion.controller;
 
 import com.examenes.autenticacion.model.Rol;
+import com.examenes.autenticacion.model.Usuario;
 import com.examenes.autenticacion.service.RolService;
+import com.examenes.autenticacion.service.UsuarioService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,40 +24,39 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author rafhael
  */
-
 @RestController
-@RequestMapping("/api/role")
-public class RolController {
+@RequestMapping("/api/user")
+public class UsuarioController {
     @Autowired
-    private RolService rolService;
+    private UsuarioService userService;
     
     @GetMapping("/findAll")
-    public ResponseEntity<List<Rol>> findAll(){
-        return new ResponseEntity<>(rolService.getAll(),HttpStatus.OK);
+    public ResponseEntity<List<Usuario>> findAll(){
+        return new ResponseEntity<>(userService.getAll(),HttpStatus.OK);
     }
     
-    @GetMapping("/findByCodRol/{name}")
-    public ResponseEntity<Rol> findByName(@PathVariable String name){
-        return new ResponseEntity<>(rolService.findByCodRol(name),HttpStatus.OK);
+    @GetMapping("/findByNombre/{name}")
+    public ResponseEntity<Usuario> findByName(@PathVariable String name){
+        return new ResponseEntity<>(userService.FindByNombre(name),HttpStatus.OK);
     }
     
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Rol> findByName(@PathVariable Long id){
-        return new ResponseEntity<>(rolService.findById(id),HttpStatus.OK);
+    public ResponseEntity<Usuario> findById(@PathVariable Long id){
+        return new ResponseEntity<>(userService.FindById(id),HttpStatus.OK);
     }
      
     @PostMapping("/add")
-    public ResponseEntity<Rol> add(@RequestBody Rol rol){
-        return new ResponseEntity<>(rolService.add(rol),HttpStatus.CREATED);
+    public ResponseEntity<Usuario> add(@RequestBody Usuario user){
+        return new ResponseEntity<>(userService.add(user),HttpStatus.CREATED);
     }
     
     @PostMapping("/update")
-    public ResponseEntity<Rol> update(@RequestBody Rol rol){
-        return new ResponseEntity<>(rolService.update(rol),HttpStatus.OK);
+    public ResponseEntity<Usuario> edit(@RequestBody Usuario user){
+        return new ResponseEntity<>(userService.edit(user),HttpStatus.OK);
     }
     
     @PostMapping("/delete")
     public ResponseEntity<Boolean> delete(@RequestParam Long id){
-        return new ResponseEntity<>(rolService.delete(id),HttpStatus.OK);
+        return new ResponseEntity<>(userService.delete(id),HttpStatus.OK);
     }
 }
